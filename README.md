@@ -39,7 +39,7 @@ pip install -r app/requirements.txt
 
 ## Dataset
 
-The dataset used for this project is the "udemy_course_data.csv" file, which is included in the root folder of the repository. The cleaned version of this dataset, "UdemyCleanedTitle.csv", is located in the `app` folder. Please note that I am not the owner of this dataset; it was downloaded from Udemy for educational purposes.
+The dataset used for this project is the "udemy_course_data.csv" file, which is included in the root folder of the repository. The cleaned version of this dataset, "UdemyCleanedTitle.csv", is located in the `app` folder. Please note that I am not the owner of this dataset; it was downloaded from internet for educational purposes.
 
 ## Model Training
 
