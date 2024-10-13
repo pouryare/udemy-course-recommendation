@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udemy Course Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Udemy Course Recommendation System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Enter The Name of the Course for Recommendations</h1>
+                <div class="form-floating my-4">
+                    <form method="post">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="course" placeholder="Enter course title" required>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Recommend</button>
+                    </form>
+                </div>
+
+                {% if showtitle %}
+                    <h2 class="jumbotron-heading">Recommendations for Course <span style="color: red; font-size:1.5rem;">"{{coursename}}"</span> are shown below</h2>
+                {% endif %}
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                {% if showerror %}
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">Seems Like the Course for {{coursename}} is not available currently, we'll report it to the Course Administrator for uploading the course :)</p>
+                            <a href="/" class="btn btn-primary">Home Page</a>
+                        </div>
+                    </div>
+                {% elif coursemap %}
+                    <div class="row">
+                        {% for course_title, course_url in coursemap.items() %}
+                            <div class="col-md-4">
+                                <div class="card mb-4 shadow-sm">
+                                    <div class="card-body bg-dark">
+                                        <p class="card-text text-white">{{ course_title }}</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="{{ course_url }}" class="btn btn-sm btn-outline-secondary" target="_blank">View Course</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
