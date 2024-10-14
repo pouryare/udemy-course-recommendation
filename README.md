@@ -51,7 +51,7 @@ The Flask application is defined in `app/app.py`. It provides a user interface f
 
 ## Deployment Options
 
-There are three ways to use this application:
+There are four ways to deploy and use this application:
 
 1. **Run Locally**:
    - Navigate to the `app` directory: `cd app`
@@ -66,8 +66,30 @@ There are three ways to use this application:
    - Push your code to Heroku: `git push heroku master`
 
 3. **Use Docker**:
+   - Pull the image from Docker Hub: `docker pull pouryare/udemy-course-recommendation`
+   - Run the container: `docker run -p 8080:8080 pouryare/udemy-course-recommendation`
+
+   Alternatively, you can build the image locally:
    - Build the Docker image: `docker build -t pouryare/udemy-course-recommendation ./app`
    - Run the container: `docker run -p 8080:8080 pouryare/udemy-course-recommendation`
+
+4. **Deploy on Azure Cloud**:
+   - Have an Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+   - Install [Python 3.6 or higher](https://www.python.org/downloads/).
+   - Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+   - Sign in to Azure: `az login`
+   - Navigate to the `app` directory: `cd app`
+   - Create and activate a virtual environment:
+     ```
+     py -3 -m venv .venv
+     .venv\scripts\activate
+     ```
+   - Install requirements: `pip install -r requirements.txt`
+   - Deploy the web app:
+     ```
+     az webapp up --sku B1 --name udemy-course-recommendation
+     ```
+   - Access your app at the URL provided in the output (e.g., http://udemy-course-recommendation.azurewebsites.net).
 
 ## File Structure
 
@@ -91,7 +113,7 @@ udemy-course-recommendation/
 
 ## Usage
 
-1. Open the application (either locally, on Heroku, or via Docker).
+1. Open the application (either locally, on Heroku, via Docker, or on Azure).
 2. On the home page, enter a course title or keywords in the search bar.
 3. Click the "Recommend" button to view similar courses.
 4. Navigate to the Dashboard to explore analytics about the Udemy course ecosystem, including:
@@ -106,4 +128,3 @@ udemy-course-recommendation/
 This project demonstrates the application of machine learning and data analysis in creating a course recommendation system and providing insights into the Udemy course marketplace. It serves as an excellent example of an end-to-end data science project with a web application interface and multiple hosting options.
 
 For any issues or suggestions, please open an issue on the GitHub repository.
-
